@@ -30,16 +30,29 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="147" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="140" y="192" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="482806265.843928">
+                                    <!--Wed, 20 Apr 2016 00:51:05 GMT-->
+                                </date>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-3187256400">
+                                    <!--Mon, 01 Jan 1900 11:00:00 GMT-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <constraints>
                             <constraint id="84" firstItem="68" firstAttribute="trailing" secondItem="83" secondAttribute="trailing"/>
                             <constraint id="85" firstItem="83" firstAttribute="top" secondItem="68" secondAttribute="top" constant="50"/>
                             <constraint id="105" firstItem="68" firstAttribute="trailing" secondItem="104" secondAttribute="trailing"/>
                             <constraint id="106" firstItem="68" firstAttribute="bottom" secondItem="104" secondAttribute="bottom" constant="70"/>
+                            <constraint id="154" firstItem="68" firstAttribute="trailing" secondItem="147" secondAttribute="trailing" constant="140"/>
+                            <constraint id="155" firstItem="68" firstAttribute="bottom" secondItem="147" secondAttribute="bottom" constant="192"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="labelQuestion" destination="83" id="name-outlet-83"/>
+                        <outlet property="buttonSave" destination="104" id="name-outlet-104"/>
+                        <outlet property="dateBirthday" destination="147" id="name-outlet-147"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="69" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,27 +78,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="108" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="0.0" y="521" width="600" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="129" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="0.0" y="506" width="600" height="30"/>
                                 <state key="normal" title="Next Question">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Text" borderStyle="roundedRect" minimumFontSize="17" id="148" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="189" y="240" width="276" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="153" firstAttribute="width" constant="276"/>
+                                </constraints>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint id="100" firstItem="96" firstAttribute="trailing" secondItem="99" secondAttribute="trailing"/>
                             <constraint id="101" firstItem="99" firstAttribute="top" secondItem="96" secondAttribute="top" constant="50"/>
-                            <constraint id="109" firstItem="96" firstAttribute="trailing" secondItem="108" secondAttribute="trailing"/>
-                            <constraint id="110" firstItem="96" firstAttribute="bottom" secondItem="108" secondAttribute="bottom" constant="70"/>
+                            <constraint id="130" firstItem="96" firstAttribute="trailing" secondItem="129" secondAttribute="trailing"/>
+                            <constraint id="131" firstItem="96" firstAttribute="bottom" secondItem="129" secondAttribute="bottom" constant="70"/>
+                            <constraint id="151" firstItem="96" firstAttribute="trailing" secondItem="148" secondAttribute="trailing" constant="135"/>
+                            <constraint id="152" firstItem="148" firstAttribute="top" secondItem="96" secondAttribute="top" constant="240"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="labelQuestion" destination="99" id="name-outlet-99"/>
+                        <outlet property="buttonSave" destination="129" id="name-outlet-129"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="-110"/>
+            <point key="canvasLocation" x="1070" y="-105"/>
         </scene>
         <scene sceneID="114">
             <objects>
@@ -102,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="117" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2044" y="-116"/>
+            <point key="canvasLocation" x="2042" y="-103"/>
         </scene>
     </scenes>
 </document>

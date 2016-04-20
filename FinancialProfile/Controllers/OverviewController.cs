@@ -13,7 +13,7 @@ namespace FinancialProfile
         private FinancialProfileDomain record = null;
         public OverviewController (IntPtr handle) : base (handle)
 		{
-		}
+        }
 
         public override void ViewDidLoad()
         {

@@ -13,12 +13,13 @@ namespace FinancialProfile
         private FinancialProfileDomain record = null;
         public BirthdayController(IntPtr handle) : base(handle)
         {
-            record = repository.Get(1);            
+            record = repository.Get(1);
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            buttonSave.TouchUpInside += HandleTouchUpInsideSave;
             // Perform any additional setup after loading the view, typically from a nib.
             if (record.Answer != null && record.Answer != "")
             {
@@ -35,6 +36,13 @@ namespace FinancialProfile
         public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
+        }
+
+        private void HandleTouchUpInsideSave(object sender, EventArgs ea)
+        {
+            record.Answer = dateBirthday.ToString();
+            repository.Update(record);
+            //new UIAlertView("Touch3", "TouchUpInside handled", null, "OK", null).Show();
         }
 
         public override void DidReceiveMemoryWarning()

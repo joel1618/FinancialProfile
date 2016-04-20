@@ -16,7 +16,7 @@ namespace FinancialProfile
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel label2Question { get; set; }
+		UIButton buttonSave { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -24,9 +24,9 @@ namespace FinancialProfile
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (label2Question != null) {
-				label2Question.Dispose ();
-				label2Question = null;
+			if (buttonSave != null) {
+				buttonSave.Dispose ();
+				buttonSave = null;
 			}
 			if (labelQuestion != null) {
 				labelQuestion.Dispose ();

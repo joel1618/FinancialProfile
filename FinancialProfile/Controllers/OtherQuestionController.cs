@@ -18,6 +18,7 @@ namespace FinancialProfile
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            buttonSave.TouchUpInside += HandleTouchUpInsideSave;
             // Perform any additional setup after loading the view, typically from a nib.
             HandleQuestion();
         }
@@ -45,6 +46,10 @@ namespace FinancialProfile
             record = repository.Get(Id);
         }
 
+        private void HandleTouchUpInsideSave(object sender, EventArgs ea)
+        {
+            
+        }
         public override void DidReceiveMemoryWarning()
         {
             base.DidReceiveMemoryWarning();
