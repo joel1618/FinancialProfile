@@ -11,8 +11,8 @@ using UIKit;
 
 namespace FinancialProfile
 {
-	[Register ("ViewController")]
-	partial class ViewController
+	[Register ("OtherQuestionsController")]
+	partial class OtherQuestionsController
 	{
 		void ReleaseDesignerOutlets ()
 		{

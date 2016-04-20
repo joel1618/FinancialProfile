@@ -11,11 +11,19 @@ using UIKit;
 
 namespace FinancialProfile
 {
-	[Register ("ViewController")]
-	partial class ViewController
+	[Register ("OtherQuestionsController")]
+	partial class OtherQuestionsController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel label2Question { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (label2Question != null) {
+				label2Question.Dispose ();
+				label2Question = null;
+			}
 		}
 	}
 }
