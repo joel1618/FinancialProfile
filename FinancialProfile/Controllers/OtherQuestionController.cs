@@ -1,4 +1,5 @@
 using FinancialProfile.Repositories;
+using Foundation;
 using System;
 using UIKit;
 using FinancialProfileDomain = FinancialProfile.Models.FinancialProfile;
@@ -10,7 +11,7 @@ namespace FinancialProfile
         private FinancialProfileRepository repository = new FinancialProfileRepository();
         private FinancialProfileDomain record = null;
         //TODO: Read from observer
-        private int Id = 2;
+        public int Id;
         public OtherQuestionController(IntPtr handle) : base(handle)
         {
         }
@@ -31,13 +32,21 @@ namespace FinancialProfile
                 labelQuestion.Text = record.Question;
             }
             else if (Id != 7)
-            {
-                //TODO: Set QuestionId in observer
+            {                
                 this.PerformSegue("OtherQuestionController", this);
             }
             else
             {
                 this.PerformSegue("OverviewController", this);
+            }
+        }
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "OtherQuestionController")
+            {
+                var controller = (OtherQuestionController)segue.DestinationViewController;
+                controller.Id = Id + 1;
             }
         }
 
@@ -48,7 +57,9 @@ namespace FinancialProfile
 
         private void HandleTouchUpInsideSave(object sender, EventArgs ea)
         {
-            
+            record.Answer = "";//TODO: Answer
+            repository.Update(record);
+            this.PerformSegue("OtherQuestionController", this);
         }
         public override void DidReceiveMemoryWarning()
         {

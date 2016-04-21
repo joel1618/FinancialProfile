@@ -14,18 +14,11 @@ namespace FinancialProfile
         public BirthdayController(IntPtr handle) : base(handle)
         {
             record = repository.Get(1);
-        }
-
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
-            buttonSave.TouchUpInside += HandleTouchUpInsideSave;
-            // Perform any additional setup after loading the view, typically from a nib.
             if (record.Answer != null && record.Answer != "")
             {
                 //redirect to other questions
                 //TODO: Set observer id
-                this.PerformSegue("OtherQuestionController", this);
+                PerformSegue("OtherQuestionController", this);
             }
             else
             {
@@ -33,15 +26,33 @@ namespace FinancialProfile
             }
         }
 
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            buttonSave.TouchUpInside += HandleTouchUpInsideSave;
+            // Perform any additional setup after loading the view, typically from a nib.
+
+        }
+
         public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
         }
 
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.Identifier == "OtherQuestionController")
+            {
+                var controller = (OtherQuestionController)segue.DestinationViewController;
+                controller.Id = 2;
+            }
+        }
+
         private void HandleTouchUpInsideSave(object sender, EventArgs ea)
         {
-            record.Answer = dateBirthday.ToString();
+            record.Answer = DateTime.Parse(dateBirthday.Date.ToString()).ToShortDateString();
             repository.Update(record);
+            this.PerformSegue("OtherQuestionController", this);
             //new UIAlertView("Touch3", "TouchUpInside handled", null, "OK", null).Show();
         }
 
