@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using FinancialProfile.Repositories;
+using Foundation;
 using UIKit;
 
 namespace FinancialProfile
@@ -21,7 +22,34 @@ namespace FinancialProfile
         {
             // Override point for customization after application launch.
             // If not required for your application you can safely delete this method
-
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+            var storyboard = UIStoryboard.FromName("Main", NSBundle.MainBundle);
+            UIViewController rootViewController = null;
+            FinancialProfileRepository repository = new FinancialProfileRepository();
+            var record = repository.Get(1);
+            if (record.Answer == null || record.Answer == "")
+            {
+                rootViewController = (UIViewController)storyboard.InstantiateInitialViewController();//.InstantiateViewController("BirthdayController");
+            }
+            else
+            {
+                for (int i = 2; i < 7; i++)
+                {
+                    record = repository.Get(i);
+                    if (record.Answer == null || record.Answer == "") {
+                        OtherQuestionController otherViewController = storyboard.InstantiateViewController("OtherQuestionController") as OtherQuestionController;
+                        otherViewController.Id = i;
+                        rootViewController = otherViewController;
+                        break;
+                    }
+                }
+            }
+            if(rootViewController == null)
+            {
+                rootViewController = (UIViewController)storyboard.InstantiateViewController("OverviewController");
+            }
+            Window.RootViewController = rootViewController;
+            Window.MakeKeyAndVisible();
             return true;
         }
 
@@ -31,6 +59,7 @@ namespace FinancialProfile
             // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) 
             // or when the user quits the application and it begins the transition to the background state.
             // Games should use this method to pause the game.
+            
         }
 
         public override void DidEnterBackground(UIApplication application)

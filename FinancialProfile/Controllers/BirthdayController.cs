@@ -13,25 +13,17 @@ namespace FinancialProfile
         private FinancialProfileDomain record = null;
         public BirthdayController(IntPtr handle) : base(handle)
         {
-            record = repository.Get(1);
-            if (record.Answer != null && record.Answer != "")
-            {
-                //redirect to other questions
-                //TODO: Set observer id
-                PerformSegue("OtherQuestionController", this);
-            }
-            else
-            {
-                labelQuestion.Text = record.Question;
-            }
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            buttonSave.TouchUpInside += HandleTouchUpInsideSave;
-            // Perform any additional setup after loading the view, typically from a nib.
 
+            buttonSave.TouchUpInside += HandleTouchUpInsideSave;
+
+            record = repository.Get(1);
+            labelQuestion.Text = record.Question;
+            // Perform any additional setup after loading the view, typically from a nib.
         }
 
         public override async void ViewWillAppear(bool animated)
@@ -39,20 +31,25 @@ namespace FinancialProfile
             base.ViewWillAppear(animated);
         }
 
-        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-        {
-            if (segue.Identifier == "OtherQuestionController")
-            {
-                var controller = (OtherQuestionController)segue.DestinationViewController;
-                controller.Id = 2;
-            }
-        }
-
         private void HandleTouchUpInsideSave(object sender, EventArgs ea)
         {
             record.Answer = DateTime.Parse(dateBirthday.Date.ToString()).ToShortDateString();
             repository.Update(record);
-            this.PerformSegue("OtherQuestionController", this);
+            UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+            var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
+            for(int i = 2; i < 7; i++)
+            {
+                record = repository.Get(i);
+                if(record.Answer == null || record.Answer == "")
+                {
+                    controller.Id = i;
+                }
+                if(i == 7)
+                {
+                    controller.Id = 7;
+                }
+            }
+            this.PresentViewController(controller, true, null);
             //new UIAlertView("Touch3", "TouchUpInside handled", null, "OK", null).Show();
         }
 

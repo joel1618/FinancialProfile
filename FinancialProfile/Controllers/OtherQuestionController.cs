@@ -27,26 +27,22 @@ namespace FinancialProfile
         private void HandleQuestion()
         {
             GetQuestion(Id);
-            if (record.Answer != null && record.Answer != "")
+            if (record.Answer == null || record.Answer == "")
             {
                 labelQuestion.Text = record.Question;
             }
             else if (Id != 7)
-            {                
-                this.PerformSegue("OtherQuestionController", this);
+            {
+                UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+                var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
+                controller.Id = Id + 1;
+                this.PresentViewController(controller, true, null);
             }
             else
             {
-                this.PerformSegue("OverviewController", this);
-            }
-        }
-
-        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-        {
-            if (segue.Identifier == "OtherQuestionController")
-            {
-                var controller = (OtherQuestionController)segue.DestinationViewController;
-                controller.Id = Id + 1;
+                UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+                var controller = (OverviewController)storyboard.InstantiateViewController("OverviewController");
+                this.PresentViewController(controller, true, null);
             }
         }
 
@@ -57,9 +53,22 @@ namespace FinancialProfile
 
         private void HandleTouchUpInsideSave(object sender, EventArgs ea)
         {
-            record.Answer = "";//TODO: Answer
+            record.Answer = textboxTotal.Text;
             repository.Update(record);
-            this.PerformSegue("OtherQuestionController", this);
+            if(Id == 7)
+            {
+                UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+                var controller = (OverviewController)storyboard.InstantiateViewController("OverviewController");
+                this.PresentViewController(controller, true, null);
+            }
+            else
+            {
+                UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+                var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
+                controller.Id = Id + 1;
+                this.PresentViewController(controller, true, null);
+            }
+            
         }
         public override void DidReceiveMemoryWarning()
         {

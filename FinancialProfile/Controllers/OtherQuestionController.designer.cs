@@ -22,6 +22,10 @@ namespace FinancialProfile
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UILabel labelQuestion { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField textboxTotal { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (buttonSave != null) {
@@ -31,6 +35,10 @@ namespace FinancialProfile
 			if (labelQuestion != null) {
 				labelQuestion.Dispose ();
 				labelQuestion = null;
+			}
+			if (textboxTotal != null) {
+				textboxTotal.Dispose ();
+				textboxTotal = null;
 			}
 		}
 	}

@@ -14,7 +14,6 @@ namespace FinancialProfile
             // you can specify it here.
             CreateDatabase();
             UIApplication.Main(args, null, "AppDelegate");
-
         }
 
         private static void CreateDatabase()

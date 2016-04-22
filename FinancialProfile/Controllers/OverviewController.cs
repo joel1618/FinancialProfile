@@ -18,13 +18,44 @@ namespace FinancialProfile
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            buttonClear.TouchUpInside += HandleButtonClear;
             // Perform any additional setup after loading the view, typically from a nib.
             CalculateFinancialProfile();
         }
 
         private void CalculateFinancialProfile()
         {
-            GetQuestion(1);
+            MakeSureAllQuestionsAnswered();
+            //TODO: Do math
+        }
+
+        private void MakeSureAllQuestionsAnswered()
+        {
+            for(int i = 1; i < 7; i++)
+            {
+                GetQuestion(i);
+                if(record.Answer == null || record.Answer == "")
+                {
+                    Transition(i);
+                }
+            }
+        }
+
+        private void Transition(int i)
+        {
+            if(i == 1)
+            {
+                UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+                var controller = (BirthdayController)storyboard.InstantiateViewController("BirthdayController");
+                this.PresentViewController(controller, true, null);
+            }
+            else
+            {
+                UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
+                var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
+                controller.Id = i;
+                this.PresentViewController(controller, true, null);
+            }
         }
 
         private void GetQuestion(int Id)
@@ -32,10 +63,16 @@ namespace FinancialProfile
             record = repository.Get(Id);
         }
 
-        //TODO
-        private void ClearFinancialProfile()
+        //TODO actuated by button click
+        private void HandleButtonClear(object sender, EventArgs ea)
         {
-            //clear data and redirect to first question
+            for(int i = 1; i < 7; i++)
+            {
+                GetQuestion(i);
+                record.Answer = "";
+                repository.Update(record);
+            }
+            Transition(1);
         }
     }
 }

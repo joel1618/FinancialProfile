@@ -14,8 +14,16 @@ namespace FinancialProfile
 	[Register ("OverviewController")]
 	partial class OverviewController
 	{
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UIButton buttonClear { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (buttonClear != null) {
+				buttonClear.Dispose ();
+				buttonClear = null;
+			}
 		}
 	}
 }
