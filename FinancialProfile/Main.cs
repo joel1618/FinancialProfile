@@ -42,13 +42,7 @@ namespace FinancialProfile
                         db.Insert(FinancialProfile);
                         FinancialProfile = new FinancialProfileDomain()
                         {
-                            Question = "How much debt do you have? ",
-                            DataType = "Int"
-                        };
-                        db.Insert(FinancialProfile);
-                        FinancialProfile = new FinancialProfileDomain()
-                        {
-                            Question = "How much do you make after taxes per year including 1099, w2, 401k, and ira contributions?",
+                            Question = "How much do you make each month after taxes including 1099, w2, 401k, and ira contributions?",
                             DataType = "Int"
                         };
                         db.Insert(FinancialProfile);
@@ -60,7 +54,7 @@ namespace FinancialProfile
                         db.Insert(FinancialProfile);
                         FinancialProfile = new FinancialProfileDomain()
                         {
-                            Question = "How much is your car payment each month?",
+                            Question = "How much do you spend each month on your car?",
                             DataType = "Int"
                         };
                         db.Insert(FinancialProfile);

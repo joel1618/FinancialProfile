@@ -12,5 +12,7 @@ namespace FinancialProfile.Models
         public string Question { get; set; }
         public string Answer { get; set; }
         public string DataType { get; set; }
+        public DateTime? ModifiedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
     }
 }

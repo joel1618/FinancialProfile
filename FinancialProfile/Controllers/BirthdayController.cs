@@ -37,14 +37,14 @@ namespace FinancialProfile
             repository.Update(record);
             UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
             var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
-            for(int i = 2; i < 7; i++)
+            for(int i = 2; i < 6; i++)
             {
                 record = repository.Get(i);
                 if(record.Answer == null || record.Answer == "")
                 {
                     controller.Id = i;
                 }
-                if(i == 7)
+                if(i == 6)
                 {
                     controller.Id = 7;
                 }

@@ -31,7 +31,7 @@ namespace FinancialProfile
             {
                 labelQuestion.Text = record.Question;
             }
-            else if (Id != 7)
+            else if (Id != 6)
             {
                 UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
                 var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
@@ -54,8 +54,9 @@ namespace FinancialProfile
         private void HandleTouchUpInsideSave(object sender, EventArgs ea)
         {
             record.Answer = textboxTotal.Text;
+            record.CreatedAt = DateTime.Now.Date;
             repository.Update(record);
-            if(Id == 7)
+            if(Id == 6)
             {
                 UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
                 var controller = (OverviewController)storyboard.InstantiateViewController("OverviewController");

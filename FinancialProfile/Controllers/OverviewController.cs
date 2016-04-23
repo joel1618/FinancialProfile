@@ -23,15 +23,28 @@ namespace FinancialProfile
             CalculateFinancialProfile();
         }
 
+        //http://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php?page=2
         private void CalculateFinancialProfile()
         {
             MakeSureAllQuestionsAnswered();
             //TODO: Do math
+            var birthday = int.Parse(repository.Get(1).Answer);
+            var netWorth = int.Parse(repository.Get(2).Answer);
+            var makeEachMonth = int.Parse(repository.Get(3).Answer);
+            var spendOnHouse = int.Parse(repository.Get(4).Answer);
+            var spendOnCar = int.Parse(repository.Get(5).Answer);
+            var spendOnOther = int.Parse(repository.Get(6).Answer);
+            var spendEachMonth = spendOnHouse + spendOnCar + spendOnOther;
+            var totalNeededMonthly = spendEachMonth * 12.5;
+            var monthsToSave = (totalNeededMonthly - netWorth) / (makeEachMonth - spendEachMonth);
+             
+            var lastNetWorthDate = repository.Get(2).CreatedAt;
+            var saveEachMonth = "";
         }
 
         private void MakeSureAllQuestionsAnswered()
         {
-            for(int i = 1; i < 7; i++)
+            for(int i = 1; i < 6; i++)
             {
                 GetQuestion(i);
                 if(record.Answer == null || record.Answer == "")

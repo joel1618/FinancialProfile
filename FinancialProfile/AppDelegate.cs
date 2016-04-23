@@ -33,7 +33,7 @@ namespace FinancialProfile
             }
             else
             {
-                for (int i = 2; i < 7; i++)
+                for (int i = 2; i < 6; i++)
                 {
                     record = repository.Get(i);
                     if (record.Answer == null || record.Answer == "") {
