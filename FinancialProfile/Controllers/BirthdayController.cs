@@ -37,19 +37,18 @@ namespace FinancialProfile
             repository.Update(record);
             UIStoryboard storyboard = UIStoryboard.FromName("Main", null);
             var controller = (OtherQuestionController)storyboard.InstantiateViewController("OtherQuestionController");
-            for(int i = 2; i < 6; i++)
+            for(int i = 2; i < 7; i++)
             {
                 record = repository.Get(i);
                 if(record.Answer == null || record.Answer == "")
                 {
                     controller.Id = i;
-                }
-                if(i == 6)
-                {
-                    controller.Id = 7;
+                    this.PresentViewController(controller, true, null);
                 }
             }
+            controller.Id = 7;
             this.PresentViewController(controller, true, null);
+            
             //new UIAlertView("Touch3", "TouchUpInside handled", null, "OK", null).Show();
         }
 

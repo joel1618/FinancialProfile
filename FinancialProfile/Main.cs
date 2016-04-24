@@ -34,6 +34,7 @@ namespace FinancialProfile
                             DataType = "DateTime"
                         };
                         db.Insert(FinancialProfile);
+                        var question = db.Get<FinancialProfileDomain>(1);
                         FinancialProfile = new FinancialProfileDomain()
                         {
                             Question = "What is your net worth?",

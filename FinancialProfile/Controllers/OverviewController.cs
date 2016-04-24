@@ -1,5 +1,6 @@
 using FinancialProfile.Repositories;
 using System;
+using System.Threading.Tasks;
 using UIKit;
 using FinancialProfileDomain = FinancialProfile.Models.FinancialProfile;
 
@@ -23,28 +24,53 @@ namespace FinancialProfile
             CalculateFinancialProfile();
         }
 
-        //http://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php?page=2
+        
         private void CalculateFinancialProfile()
         {
             MakeSureAllQuestionsAnswered();
-            //TODO: Do math
-            var birthday = int.Parse(repository.Get(1).Answer);
+            var todaysDate = DateTime.Now.Date;
+            var birthday = DateTime.Parse(repository.Get(1).Answer);
+            var netWorthDate = repository.Get(2).ModifiedAt;
             var netWorth = int.Parse(repository.Get(2).Answer);
             var makeEachMonth = int.Parse(repository.Get(3).Answer);
             var spendOnHouse = int.Parse(repository.Get(4).Answer);
             var spendOnCar = int.Parse(repository.Get(5).Answer);
             var spendOnOther = int.Parse(repository.Get(6).Answer);
             var spendEachMonth = spendOnHouse + spendOnCar + spendOnOther;
-            var totalNeededMonthly = spendEachMonth * 12.5;
-            var monthsToSave = (totalNeededMonthly - netWorth) / (makeEachMonth - spendEachMonth);
-             
-            var lastNetWorthDate = repository.Get(2).CreatedAt;
-            var saveEachMonth = "";
+
+
+            var totalNeeded = spendEachMonth * 12.5 * 12;//assuming 8% interest
+
+            var principal = netWorth;
+            var time = 0.00;
+            var rate = (double)8 / (double)100;
+            var depositPerMonth = makeEachMonth - spendEachMonth;
+            var depositEachDay = (double)depositPerMonth * 12 / 365;
+            time = CalculateTime(principal, rate, depositEachDay, totalNeeded);
+            var daysSinceNetWorthSet = todaysDate - netWorthDate;
+            //Day's before net worth * interest > spending (net spending is positive?)
+            textboxTimeRemaining.Text = (time - double.Parse(daysSinceNetWorthSet.ToString())).ToString() + " days";
+            //Today's interest earned
+        }
+
+        //http://quant.stackexchange.com/questions/25586/compound-interest-calculator-solving-for-time-with-deposits/25587#25587
+        private double CalculateTime(double principal, double rate, double deposit, double total)
+        {
+            //days needed to save to reach total goal
+            var time = Math.Log((total + (deposit / (rate / 365))) / (principal + (deposit / (rate / 365)))) / Math.Log(1 + (rate / 365));
+            time = Math.Round(time, MidpointRounding.AwayFromZero);
+            return time;
+        }
+
+        private double NetWorthCalculator(double principal, double rate, double deposit, double time)
+        {
+            var networthnow = 0.00;
+            return networthnow;
         }
 
         private void MakeSureAllQuestionsAnswered()
         {
-            for(int i = 1; i < 6; i++)
+            for(int i = 1; i <6; i++)
             {
                 GetQuestion(i);
                 if(record.Answer == null || record.Answer == "")
@@ -79,13 +105,33 @@ namespace FinancialProfile
         //TODO actuated by button click
         private void HandleButtonClear(object sender, EventArgs ea)
         {
-            for(int i = 1; i < 7; i++)
+            int button = ShowAlert("Clear", "Are you sure you want to restart your profile?", "Yes", "Cancel").Result;
+            if(button == 1)
             {
-                GetQuestion(i);
-                record.Answer = "";
-                repository.Update(record);
+
+                for (int i = 1; i < 7; i++)
+                {
+                    GetQuestion(i);
+                    record.Answer = "";
+                    repository.Update(record);
+                }
+                Transition(1);
             }
-            Transition(1);
+        }
+
+        public static Task<int> ShowAlert(string title, string message, params string[] buttons)
+        {
+            var tcs = new TaskCompletionSource<int>();
+            var alert = new UIAlertView
+            {
+                Title = title,
+                Message = message
+            };
+            foreach (var button in buttons)
+                alert.AddButton(button);
+            alert.Clicked += (s, e) => tcs.TrySetResult((int)e.ButtonIndex);
+            alert.Show();
+            return tcs.Task;
         }
     }
 }

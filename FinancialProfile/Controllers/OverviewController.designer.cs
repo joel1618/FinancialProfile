@@ -18,11 +18,27 @@ namespace FinancialProfile
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UIButton buttonClear { get; set; }
 
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField textboxInterestToday { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField textboxTimeRemaining { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (buttonClear != null) {
 				buttonClear.Dispose ();
 				buttonClear = null;
+			}
+			if (textboxInterestToday != null) {
+				textboxInterestToday.Dispose ();
+				textboxInterestToday = null;
+			}
+			if (textboxTimeRemaining != null) {
+				textboxTimeRemaining.Dispose ();
+				textboxTimeRemaining = null;
 			}
 		}
 	}

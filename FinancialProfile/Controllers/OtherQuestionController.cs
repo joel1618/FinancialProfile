@@ -55,6 +55,7 @@ namespace FinancialProfile
         {
             record.Answer = textboxTotal.Text;
             record.CreatedAt = DateTime.Now.Date;
+            record.ModifiedAt = DateTime.Now.Date;
             repository.Update(record);
             if(Id == 6)
             {
