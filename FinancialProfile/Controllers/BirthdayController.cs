@@ -44,12 +44,15 @@ namespace FinancialProfile
                 {
                     controller.Id = i;
                     this.PresentViewController(controller, true, null);
+                    break;
+                }
+                if(i == 7)
+                {
+                    controller.Id = 7;
+                    this.PresentViewController(controller, true, null);
+                    break;
                 }
             }
-            controller.Id = 7;
-            this.PresentViewController(controller, true, null);
-            
-            //new UIAlertView("Touch3", "TouchUpInside handled", null, "OK", null).Show();
         }
 
         public override void DidReceiveMemoryWarning()

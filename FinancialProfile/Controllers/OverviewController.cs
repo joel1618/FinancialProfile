@@ -59,7 +59,9 @@ namespace FinancialProfile
                 "Below you will find a great snapshot of todays potential earnings as well as helpful information to help you retire earlier!";
             //Today's interest earned
             var currentNetWorth = NetWorthCalculator(principal, rate, depositEachDay, daysSinceNetWorthSet);
-            textboxInterestToday.Text = "$" + Math.Round((double.Parse(currentNetWorth.ToString()) * .08 / 365),2).ToString();
+            textboxInterestToday.Text = String.Format("{0:C}", (decimal)Math.Round((double.Parse(currentNetWorth.ToString()) * .08 / 365),2));
+            textboxNetWorthToday.Text = String.Format("{0:C}", (decimal)currentNetWorth);
+            textboxSpendingToday.Text = String.Format("{0:C}", (decimal)Math.Round((double)spendEachMonth / 30, 2));
         }
 
         //http://quant.stackexchange.com/questions/25586/compound-interest-calculator-solving-for-time-with-deposits/25587#25587
@@ -118,10 +120,10 @@ namespace FinancialProfile
         }
 
         //TODO actuated by button click
-        private void HandleButtonClear(object sender, EventArgs ea)
+        private async void HandleButtonClear(object sender, EventArgs ea)
         {
-            int button = ShowAlert("Clear", "Are you sure you want to restart your profile?", "Yes", "Cancel").Result;
-            if(button == 1)
+            int button = await ShowAlert("Clear", "Are you sure you want to restart your profile?", "Yes", "Cancel");
+            if (button == 0)
             {
 
                 for (int i = 1; i < 7; i++)

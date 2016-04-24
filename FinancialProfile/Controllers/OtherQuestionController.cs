@@ -53,7 +53,10 @@ namespace FinancialProfile
 
         private void HandleTouchUpInsideSave(object sender, EventArgs ea)
         {
-            record.Answer = textboxTotal.Text;
+            if (textboxTotal.Text == null || textboxTotal.Text == "")
+                record.Answer = "0";
+            else
+                record.Answer = textboxTotal.Text;
             record.CreatedAt = DateTime.Now.Date;
             record.ModifiedAt = DateTime.Now.Date;
             repository.Update(record);
