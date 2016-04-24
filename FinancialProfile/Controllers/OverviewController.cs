@@ -47,10 +47,19 @@ namespace FinancialProfile
             var depositPerMonth = makeEachMonth - spendEachMonth;
             var depositEachDay = (double)depositPerMonth * 12 / 365;
             time = CalculateTime(principal, rate, depositEachDay, totalNeeded);
-            var daysSinceNetWorthSet = todaysDate - netWorthDate;
+            var d1 = DateTime.Parse(todaysDate.ToString("d"));
+            var d2 = DateTime.Parse(netWorthDate.Value.ToString("d"));
+            var daysSinceNetWorthSet = (d1 - d2).TotalDays;
+           
             //Day's before net worth * interest > spending (net spending is positive?)
-            textboxTimeRemaining.Text = (time - double.Parse(daysSinceNetWorthSet.ToString())).ToString() + " days";
+            textboxTimeRemaining.Text = (time - daysSinceNetWorthSet).ToString() + " days";
+            labelSummary.Text = "You will be " + 
+                Math.Truncate((((todaysDate - birthday).TotalDays) + (time - daysSinceNetWorthSet)) / 365) +
+                " years old by the time your net worth could potentially cover all of what you spend each year.  " +
+                "Below you will find a great snapshot of todays potential earnings as well as helpful information to help you retire earlier!";
             //Today's interest earned
+            var currentNetWorth = NetWorthCalculator(principal, rate, depositEachDay, daysSinceNetWorthSet);
+            textboxInterestToday.Text = "$" + Math.Round((double.Parse(currentNetWorth.ToString()) * .08 / 365),2).ToString();
         }
 
         //http://quant.stackexchange.com/questions/25586/compound-interest-calculator-solving-for-time-with-deposits/25587#25587
@@ -62,10 +71,16 @@ namespace FinancialProfile
             return time;
         }
 
+        //http://www.moneychimp.com/articles/finworks/fmbasinv.htm
         private double NetWorthCalculator(double principal, double rate, double deposit, double time)
         {
-            var networthnow = 0.00;
-            return networthnow;
+            var power = (double)time / 365;
+            if(power == 0)
+            {
+                return principal;
+            }
+            var currentNetWorth = Math.Pow(principal * (1 + rate), power) + deposit * power * ((Math.Pow((1 + rate), power) - 1) / rate);
+            return currentNetWorth;
         }
 
         private void MakeSureAllQuestionsAnswered()

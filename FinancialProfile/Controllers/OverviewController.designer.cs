@@ -20,6 +20,10 @@ namespace FinancialProfile
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UILabel labelSummary { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField textboxInterestToday { get; set; }
 
 		[Outlet]
@@ -31,6 +35,10 @@ namespace FinancialProfile
 			if (buttonClear != null) {
 				buttonClear.Dispose ();
 				buttonClear = null;
+			}
+			if (labelSummary != null) {
+				labelSummary.Dispose ();
+				labelSummary = null;
 			}
 			if (textboxInterestToday != null) {
 				textboxInterestToday.Dispose ();
