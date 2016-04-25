@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>FinancialProfile</string>
+	<string>Financial Profile</string>
 	<key>CFBundleIdentifier</key>
 	<string>FinancialProfile</string>
 	<key>CFBundleShortVersionString</key>

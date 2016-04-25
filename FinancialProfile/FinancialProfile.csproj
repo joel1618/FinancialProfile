@@ -126,7 +126,6 @@
   <ItemGroup>
     <Content Include="Entitlements.plist" />
     <BundleResource Include="Images\LaunchScreen.jpg" />
-    <Content Include="Images\Thumbnail.png" />
     <BundleResource Include="Images\Thumbnail57x57.png" />
     <BundleResource Include="Images\Thumbnail114x114.png" />
     <BundleResource Include="Images\Thumbnail120x120.png" />

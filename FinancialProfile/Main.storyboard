@@ -93,6 +93,9 @@
                                 <state key="normal" title="Next Question">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="0.0" y="274" width="375" height="30"/>
+                                </variation>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="224" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="60" y="229" width="480" height="30"/>
@@ -105,20 +108,41 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="60" y="200" width="38" height="20"/>
+                                </variation>
                             </label>
                         </subviews>
                         <constraints>
                             <constraint id="101" firstItem="99" firstAttribute="top" secondItem="96" secondAttribute="top" constant="50"/>
-                            <constraint id="131" firstItem="96" firstAttribute="bottom" secondItem="129" secondAttribute="bottom" constant="70"/>
                             <constraint id="195" firstItem="99" firstAttribute="leading" secondItem="96" secondAttribute="leading"/>
                             <constraint id="196" firstItem="99" firstAttribute="trailing" secondItem="96" secondAttribute="trailing"/>
-                            <constraint id="204" firstItem="129" firstAttribute="leading" secondItem="96" secondAttribute="leading"/>
-                            <constraint id="205" firstItem="129" firstAttribute="trailing" secondItem="96" secondAttribute="trailing"/>
                             <constraint id="225" firstItem="96" firstAttribute="trailing" secondItem="224" secondAttribute="trailing" constant="60"/>
                             <constraint id="226" firstItem="224" firstAttribute="top" secondItem="96" secondAttribute="top" constant="229"/>
                             <constraint id="228" firstItem="224" firstAttribute="leading" secondItem="96" secondAttribute="leading" constant="60"/>
                             <constraint id="237" firstItem="229" firstAttribute="leading" secondItem="224" secondAttribute="leading"/>
+                            <constraint id="452" firstItem="229" firstAttribute="top" secondItem="99" secondAttribute="bottom" constant="97"/>
+                            <constraint id="453" firstItem="129" firstAttribute="top" secondItem="224" secondAttribute="bottom" constant="15"/>
+                            <constraint id="454" firstItem="96" firstAttribute="bottom" secondItem="129" secondAttribute="bottom" constant="363"/>
+                            <constraint id="455" firstItem="129" firstAttribute="trailing" secondItem="96" secondAttribute="trailing"/>
+                            <constraint id="456" firstItem="129" firstAttribute="leading" secondItem="96" secondAttribute="leading"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="453"/>
+                                <exclude reference="454"/>
+                                <exclude reference="455"/>
+                                <exclude reference="456"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="453"/>
+                                <include reference="454"/>
+                                <include reference="455"/>
+                                <include reference="456"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="labelQuestion" destination="99" id="name-outlet-99"/>
@@ -340,6 +364,14 @@
             <point key="canvasLocation" x="1297" y="-111"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Images/LaunchScreen.jpg" width="3504" height="2336"/>
+        <image name="Images/Thumbnail114x114.png" width="114" height="114"/>
+        <image name="Images/Thumbnail120x120.png" width="120" height="120"/>
+        <image name="Images/Thumbnail57x57.png" width="57" height="57"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon.png" width="57" height="57"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedScreenMetrics key="destination" type="retina47"/>
     </simulatedMetricsContainer>
