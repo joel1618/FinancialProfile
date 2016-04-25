@@ -53,15 +53,16 @@ namespace FinancialProfile
            
             //Day's before net worth * interest > spending (net spending is positive?)
             textboxTimeRemaining.Text = (time - daysSinceNetWorthSet).ToString() + " days";
-            labelSummary.Text = "You will be " + 
+            labelSummary.Text = "You will be " +
                 Math.Truncate((((todaysDate - birthday).TotalDays) + (time - daysSinceNetWorthSet)) / 365) +
-                " years old by the time your net worth could potentially cover all of what you spend each year.  " +
-                "Below you will find a great snapshot of todays potential earnings as well as helpful information to help you retire earlier!";
+                " years old by the time your yearly expenses are less than your net worth * 8% interest.  ";
             //Today's interest earned
             var currentNetWorth = NetWorthCalculator(principal, rate, depositEachDay, daysSinceNetWorthSet);
             textboxInterestToday.Text = String.Format("{0:C}", (decimal)Math.Round((double.Parse(currentNetWorth.ToString()) * .08 / 365),2));
             textboxNetWorthToday.Text = String.Format("{0:C}", (decimal)currentNetWorth);
             textboxSpendingToday.Text = String.Format("{0:C}", (decimal)Math.Round((double)spendEachMonth / 30, 2));
+            textboxSavingToday.Text = String.Format("{0:C}", (decimal)Math.Round((double)depositPerMonth / 30, 2));
+            textboxEarningToday.Text = String.Format("{0:C}", (decimal)Math.Round((double)makeEachMonth / 30, 2));
         }
 
         //http://quant.stackexchange.com/questions/25586/compound-interest-calculator-solving-for-time-with-deposits/25587#25587

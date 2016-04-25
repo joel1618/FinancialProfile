@@ -24,11 +24,19 @@ namespace FinancialProfile
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField textboxEarningToday { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField textboxInterestToday { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
 		UITextField textboxNetWorthToday { get; set; }
+
+		[Outlet]
+		[GeneratedCode ("iOS Designer", "1.0")]
+		UITextField textboxSavingToday { get; set; }
 
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
@@ -48,6 +56,10 @@ namespace FinancialProfile
 				labelSummary.Dispose ();
 				labelSummary = null;
 			}
+			if (textboxEarningToday != null) {
+				textboxEarningToday.Dispose ();
+				textboxEarningToday = null;
+			}
 			if (textboxInterestToday != null) {
 				textboxInterestToday.Dispose ();
 				textboxInterestToday = null;
@@ -55,6 +67,10 @@ namespace FinancialProfile
 			if (textboxNetWorthToday != null) {
 				textboxNetWorthToday.Dispose ();
 				textboxNetWorthToday = null;
+			}
+			if (textboxSavingToday != null) {
+				textboxSavingToday.Dispose ();
+				textboxSavingToday = null;
 			}
 			if (textboxSpendingToday != null) {
 				textboxSpendingToday.Dispose ();

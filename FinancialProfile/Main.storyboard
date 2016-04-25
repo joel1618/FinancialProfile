@@ -88,7 +88,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="129" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="129" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="0.0" y="506" width="600" height="30"/>
                                 <state key="normal" title="Next Question">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,6 +264,42 @@
                                     <rect key="frame" x="43" y="398" width="129" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Saving Today" lineBreakMode="tailTruncation" minimumFontSize="10" id="462" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="133" y="402" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="47" y="442" width="122" height="21"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="463" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="191" y="397" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="191" y="437" width="175" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="470" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="191" y="397" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="191" y="481" width="175" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Earning Today" lineBreakMode="tailTruncation" minimumFontSize="10" id="471" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="right">
+                                <rect key="frame" x="133" y="402" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="47" y="481" width="128" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint id="213" firstItem="212" firstAttribute="leading" secondItem="116" secondAttribute="leading" constant="20"/>
@@ -296,6 +332,18 @@
                             <constraint id="437" firstItem="243" firstAttribute="top" secondItem="321" secondAttribute="bottom" constant="19"/>
                             <constraint id="443" firstItem="276" firstAttribute="top" secondItem="243" secondAttribute="bottom" constant="20"/>
                             <constraint id="446" firstItem="275" firstAttribute="top" secondItem="243" secondAttribute="bottom" constant="24"/>
+                            <constraint id="464" firstItem="116" firstAttribute="trailing" secondItem="463" secondAttribute="trailing" constant="9"/>
+                            <constraint id="465" firstItem="463" firstAttribute="top" secondItem="426" secondAttribute="bottom" constant="14"/>
+                            <constraint id="466" firstItem="463" firstAttribute="leading" secondItem="116" secondAttribute="leading" constant="191"/>
+                            <constraint id="467" firstItem="463" firstAttribute="leading" secondItem="462" secondAttribute="trailing" constant="22"/>
+                            <constraint id="468" firstItem="462" firstAttribute="top" secondItem="427" secondAttribute="bottom" constant="23"/>
+                            <constraint id="469" firstItem="462" firstAttribute="leading" secondItem="116" secondAttribute="leading" constant="47"/>
+                            <constraint id="472" firstItem="116" firstAttribute="trailing" secondItem="470" secondAttribute="trailing" constant="9"/>
+                            <constraint id="473" firstItem="470" firstAttribute="top" secondItem="463" secondAttribute="bottom" constant="14"/>
+                            <constraint id="474" firstItem="470" firstAttribute="leading" secondItem="116" secondAttribute="leading" constant="191"/>
+                            <constraint id="475" firstItem="470" firstAttribute="leading" secondItem="471" secondAttribute="trailing" constant="16"/>
+                            <constraint id="476" firstItem="471" firstAttribute="top" secondItem="462" secondAttribute="bottom" constant="18"/>
+                            <constraint id="477" firstItem="471" firstAttribute="leading" secondItem="116" secondAttribute="leading" constant="47"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -315,12 +363,28 @@
                                 <exclude reference="437"/>
                                 <exclude reference="443"/>
                                 <exclude reference="446"/>
+                                <exclude reference="464"/>
+                                <exclude reference="465"/>
+                                <exclude reference="466"/>
+                                <exclude reference="467"/>
+                                <exclude reference="468"/>
+                                <exclude reference="469"/>
+                                <exclude reference="472"/>
+                                <exclude reference="473"/>
+                                <exclude reference="474"/>
+                                <exclude reference="475"/>
+                                <exclude reference="476"/>
+                                <exclude reference="477"/>
                             </mask>
                             <mask key="subviews">
                                 <exclude reference="419"/>
                                 <exclude reference="420"/>
                                 <exclude reference="426"/>
                                 <exclude reference="427"/>
+                                <exclude reference="462"/>
+                                <exclude reference="463"/>
+                                <exclude reference="470"/>
+                                <exclude reference="471"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -341,12 +405,28 @@
                                 <include reference="437"/>
                                 <include reference="443"/>
                                 <include reference="446"/>
+                                <include reference="464"/>
+                                <include reference="465"/>
+                                <include reference="466"/>
+                                <include reference="467"/>
+                                <include reference="468"/>
+                                <include reference="469"/>
+                                <include reference="472"/>
+                                <include reference="473"/>
+                                <include reference="474"/>
+                                <include reference="475"/>
+                                <include reference="476"/>
+                                <include reference="477"/>
                             </mask>
                             <mask key="subviews">
                                 <include reference="419"/>
                                 <include reference="420"/>
                                 <include reference="426"/>
                                 <include reference="427"/>
+                                <include reference="462"/>
+                                <include reference="463"/>
+                                <include reference="470"/>
+                                <include reference="471"/>
                             </mask>
                         </variation>
                     </view>
@@ -357,6 +437,8 @@
                         <outlet property="labelSummary" destination="321" id="name-outlet-321"/>
                         <outlet property="textboxNetWorthToday" destination="420" id="name-outlet-420"/>
                         <outlet property="textboxSpendingToday" destination="426" id="name-outlet-426"/>
+                        <outlet property="textboxSavingToday" destination="463" id="name-outlet-463"/>
+                        <outlet property="textboxEarningToday" destination="470" id="name-outlet-470"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="117" userLabel="First Responder" sceneMemberID="firstResponder"/>
